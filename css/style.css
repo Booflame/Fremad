@@ -1,0 +1,241 @@
+@import url("https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap");
+
+:root {
+  /*farver*/
+  --yellow: #fecb35;
+  --black: #000000;
+  --white: #ffffff;
+  
+  /*fonte*/
+  --overskrift: 'Fjalla One', sans-serif;
+  
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role=list],
+ol[role=list] {
+  list-style: none;
+}
+
+/* Remove default margin and padding from lists */
+ul,
+ol {
+  margin-block: 0;
+  -webkit-padding-start: 0;
+          padding-inline-start: 0;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  -webkit-text-decoration-skip: ink;
+          text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+*::before,
+*::after {
+    -webkit-animation-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+            animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+html {
+  font-size: 100%;
+}
+
+.flex {
+  display: flex;
+}
+.flex-center{
+  justify-content: center;
+  align-items: center;
+}
+.flex-jc-c {
+  justify-content: center;
+}
+.flex-jc-sb {
+  justify-content: space-between;
+}
+.flex-jc-fe {
+  justify-content: flex-end;
+}
+.flex-ai-c {
+  align-items: center;
+}
+.flex-ai-fe {
+  align-items: flex-end;
+}
+.flexc {
+  display: flex;
+  flex-direction: column;
+}
+.wrapper{
+  padding: 1em;
+}
+
+header {
+  min-height: 150px;
+  background-color: black;
+  padding-inline: 20px;
+}
+.burger div,
+.burger div::before,
+.burger div::after{
+  width: 36px;
+  height: 3px;
+  background-color: var(--yellow);
+}
+.burger div::before,
+.burger div::after{
+  content: "";
+  display: inline-block;
+}
+.burger div::before{
+  transform: translateY(-24px);
+}
+.burger div::after{
+  transform: translateY(-28px);
+}
+.logo {
+  width: 120px;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+header nav {
+  font-size: 2em;
+  font-family: var(--overskrift);
+  display: none;
+}
+header ul {
+  display: flex;
+}
+header li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 10px;
+}
+header a {
+  text-decoration: none;
+  color: #fecb34;
+}
+.cta{
+  color: var(--yellow);
+  font-family: var(--overskrift);
+  border: 2px solid var(--yellow);
+  padding: .2em 1em;
+  text-align: center;
+}
+
+.intro-slide{
+  position: relative;
+}
+.intro-slide .text{
+  position: absolute;
+  background: hsla(0, 0%, 0%, .5);
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 80%;
+  width: 80%;
+  z-index: 3;
+}
+.intro-slide h2{
+  text-transform: uppercase;
+  font-family: var(--overskrift);
+  color: var(--white);
+  text-align: center;
+}
+
+.intro-slide a{
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--white);
+  border: 2px solid var(--yellow);
+  font-family: var(--overskrift);
+   
+}
+
+
+
+footer{
+  background: var(--yellow);
+  font-family: var(--overskrift);
+}
+
+footer h2{
+  position: relative;
+  padding-bottom: .5em;
+}
+footer h2::after{
+  content: "";
+  display: inline-block;
+  width: 40px;
+  height: 2px;
+  background-color: var(--black);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+footer h2,
+footer h3,
+footer p{
+  margin-bottom: .5em;
+  margin-top: .5em;
+}
