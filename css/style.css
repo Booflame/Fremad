@@ -1,107 +1,36 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url(reset.css);
 
 :root {
   /*farver*/
   --yellow: #fecb35;
-  --black: #000000;
   --white: #ffffff;
+  --black: #0e0e10;
+  --lightblack: #1d1d1b;
   
   /*fonte*/
   --overskrift: 'Fjalla One', sans-serif;
+  --tekst: 'Rubik', sans-serif;
   
+  /* størrelser */
+  --wrap: 90%;
+  --navheight: 150px;
+  --hvr-nav-height: 4px;
 }
 
-/* Box sizing rules */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/* Remove default margin */
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-figure,
-blockquote,
-dl,
-dd {
-  margin: 0;
-}
-
-/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role=list],
-ol[role=list] {
-  list-style: none;
-}
-
-/* Remove default margin and padding from lists */
-ul,
-ol {
-  margin-block: 0;
-  -webkit-padding-start: 0;
-          padding-inline-start: 0;
-}
-
-/* Set core root defaults */
-html:focus-within {
-  scroll-behavior: smooth;
-}
-
-/* Set core body defaults */
-body {
-  min-height: 100vh;
-  text-rendering: optimizeSpeed;
-  line-height: 1.5;
-}
-
-/* A elements that don't have a class get default styles */
-a:not([class]) {
-  -webkit-text-decoration-skip: ink;
-          text-decoration-skip-ink: auto;
-}
-
-/* Make images easier to work with */
-img,
-picture {
-  max-width: 100%;
-  display: block;
-}
-
-/* Inherit fonts for inputs and buttons */
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-
-/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
-@media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-    scroll-behavior: auto;
-  }
-
-  *,
-*::before,
-*::after {
-    -webkit-animation-duration: 0.01ms !important;
-            animation-duration: 0.01ms !important;
-    -webkit-animation-iteration-count: 1 !important;
-            animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-html {
-  font-size: 100%;
-}
-
+/* flex classes så man nemt kan designe layout i html */
 .flex {
   display: flex;
+}
+.flexc {
+  display: flex;
+  flex-direction: column;
+}
+.flex-mobile{
+  display: flex;
+  flex-direction: column;
 }
 .flex-center{
   justify-content: center;
@@ -122,85 +51,402 @@ html {
 .flex-ai-fe {
   align-items: flex-end;
 }
-.flexc {
+.flexbox{
   display: flex;
-  flex-direction: column;
+  flex: 1;
 }
+.gap-1{
+  gap: 1em;
+}
+.gap-2{
+  gap: 2em;
+}
+.gap-3{
+  gap: 3em;
+}
+
 .wrapper{
-  padding: 1em;
+  width: var(--wrap);
+  margin-inline: auto;
 }
 
 header {
-  min-height: 150px;
-  background-color: black;
-  padding-inline: 20px;
+  background-color: var(--black);
+  position: relative;
 }
-.burger div,
-.burger div::before,
-.burger div::after{
-  width: 36px;
-  height: 3px;
-  background-color: var(--yellow);
+
+header .wrapper{
+  min-height: var(--navheight);
+  padding-bottom: 40px;
 }
-.burger div::before,
-.burger div::after{
-  content: "";
-  display: inline-block;
+
+header .wrapper > *:nth-child(3){
+  display: none;
 }
-.burger div::before{
-  transform: translateY(-24px);
-}
-.burger div::after{
-  transform: translateY(-28px);
-}
-.logo {
-  width: 120px;
-  padding-top: 20px;
-  padding-left: 20px;
-}
+
 header nav {
   font-size: 2em;
   font-family: var(--overskrift);
-  display: none;
 }
-header ul {
-  display: flex;
-}
+
 header li {
   list-style-type: none;
-  display: inline-block;
-  padding: 10px;
+  color: var(--yellow);
 }
+
 header a {
+  color: var(--yellow);
   text-decoration: none;
-  color: #fecb34;
 }
+
+/* Vi laver vores egen burgermenu ved brug af pseudo elementer ::before og ::after */
+.burger,
+.burger::before,
+.burger::after{
+  display: block;
+  width: 36px;
+  height: 3px;
+  background-color: var(--yellow);
+  cursor: pointer;
+}
+
+.burger::before,
+.burger::after{
+  content: "";
+}
+/* .burger::before{
+  transform: translateY(-20px);
+}
+
+.burger::after{
+  transform: translateY(-13px);
+} */
+.burger::before{
+  transform: translateY(11px);
+}
+
+.burger::after{
+  transform: translateY(20px);
+}
+
+
+/* styler vore mobile nav og bruger psuedo classen checked til at vise den frem */
+input[type=checkbox]{
+  display: none;
+}
+
+.mobile-nav input[type=checkbox]:checked ~ .mobile-navbar{
+  transform: translateX(120%);
+  transition: transform 500ms ease-in-out;
+}
+
+.mobile-navbar{
+  position: absolute;
+  width: 100%;
+  padding-bottom: 1em;
+  background-color: var(--black);
+  text-transform: uppercase;
+  top: var(--navheight);
+  left: -120%;
+  z-index: 9;
+  transition: transform 500ms ease-in-out;
+}
+
+.mobile-nav li + li{
+  padding-top: .5em;
+}
+
+.arrow-down{
+  display: inline-block;
+  position: relative;
+}
+/* .arrow-down::after{
+  content: "\2304";
+  position: absolute;
+  display: block;
+} */
+
+.arrow-down::before, 
+.arrow-down::after {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  background-color: var(--yellow);
+  width: 20px;
+  height: 3px;
+  cursor: pointer;  
+}
+.arrow-down::before{
+  transform: rotate(45deg) translate(-8px, -8px);
+}
+.arrow-down::after{
+  transform: rotate(-45deg) translate(17px, 1px);
+}
+
+input[type=checkbox]:checked ~ .dropdown-menu{
+  display: flex;
+}
+
+.dropdown-menu{
+  display: none;
+  padding-top: .5em;
+}
+
+.dropdown-menu li{
+  width: 165px;
+  white-space: nowrap;
+}
+.dropdown-menu .longboi{
+  white-space: normal;
+}
+
+.dropdown{
+  position: relative;
+}
+.dropdown-btn{
+  width: 12ch;
+  text-transform: uppercase;
+}
+input[type=checkbox]:checked ~ .dropdown-menu-desktop{
+  display: flex;
+}
+.dropdown-menu-desktop{
+  display: none;
+  position: absolute;
+  top: 85px;
+  right: -45px;
+  background: var(--black);
+  z-index: 9;
+}
+.dropdown-menu-desktop li{
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.logo {
+  width: 80px;
+  display: block;
+}
+
+.navbar li + li{
+  margin-left: 1em;
+}
+
+.navbar a{
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: var(--hvr-nav-height);
+  white-space: nowrap;
+}
+
+.navbar a::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: var(--hvr-nav-height);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--yellow);
+  transform: translateY(calc(1px + var(--hvr-nav-height)));
+  transition: transform 200ms ease-in;
+  z-index: 2;
+}
+
+.navbar a:hover::after {
+  transform: translateY(0);
+}
+
 .cta{
   color: var(--yellow);
   font-family: var(--overskrift);
-  border: 2px solid var(--yellow);
   padding: .2em 1em;
   text-align: center;
+  transition-property: color, background-color;
+  transition-duration: 200ms;
+  transition-timing-function: ease-in-out;
+  box-shadow: 0 0 0 2px var(--yellow);
+  transform: translateY(-15px);
 }
+
+.cta:hover{
+  background-color: var(--yellow);
+  color: var(--black);
+}
+
+main{
+  background-image: url(../content/img/mobilbaggrund375.jpg);
+}
+
+main p {
+  font-family: var(--tekst);
+}
+
+.desktop-slides{
+  display: none;
+}
+
+.CSSgal {
+	position: relative;
+	overflow: hidden;
+	height: 500px; /* Or set a fixed height */
+  padding-top: 2em;
+}
+
+.CSSgal{
+	color: #fff;	
+	text-align: center;
+}
+
+/* SLIDER */
+
+.CSSgal .slider {
+	height: 100%;
+	white-space: nowrap;
+	transition: 0.8s;
+}
+
+/* SLIDES */
+
+.CSSgal .slider > * {
+	font-size: 1rem;
+	display: inline-block;
+	white-space: normal;
+	vertical-align: top;
+	height: 100%;
+	width: 100%;
+	background: none 50% no-repeat;
+	background-size: cover;
+  overflow: hidden;
+}
+
+/* PREV/NEXT, CONTAINERS & ANCHORS */
+
+.CSSgal .prevNext {
+	position: absolute;
+	z-index: 6;
+	top: 50%;
+	width: 100%;
+	height: 0;
+}
+
+.CSSgal .prevNext > div+div {
+	visibility: hidden; /* Hide all but first P/N container */
+}
+
+.CSSgal .prevNext a {
+	background: #fff;
+	position: absolute;
+	width:       60px;
+	height:      60px;
+	line-height: 60px; /* If you want to place numbers */
+	text-align: center;
+	opacity: 0.7;
+	-webkit-transition: 0.3s;
+					transition: 0.3s;
+	-webkit-transform: translateY(-50%);
+					transform: translateY(-50%);
+	left: 0;
+  border-radius: 50%;
+  font-size: 2rem;
+  text-decoration: none;
+}
+.CSSgal .prevNext a:hover {
+	opacity: 1;
+}
+.CSSgal .prevNext a+a {
+	left: auto;
+	right: 0;
+}
+
+/* NAVIGATION */
+
+.CSSgal .bullets {
+	position: absolute;
+	z-index: 6;
+	bottom: 0;
+	padding: 10px 0;
+	width: 100%;
+	text-align: center;
+}
+.CSSgal .bullets > a {
+	display: inline-block;
+	width:       30px;
+	height:      30px;
+	line-height: 30px;
+	text-decoration: none;
+	text-align: center;
+	background: rgba(255, 255, 255, 1);
+	-webkit-transition: 0.3s;
+					transition: 0.3s;
+}
+.CSSgal .bullets > a+a {
+	background: rgba(255, 255, 255, 0.5); /* Dim all but first */
+}
+.CSSgal .bullets > a:hover {
+	background: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* NAVIGATION BUTTONS */
+/* ALL: */
+.CSSgal >s:target ~ .bullets >* {      background: rgba(255, 255, 255, 0.5);}
+/* ACTIVE */
+#s1:target ~ .bullets >*:nth-child(1) {background: rgba(255, 255, 255,   1);}
+#s2:target ~ .bullets >*:nth-child(2) {background: rgba(255, 255, 255,   1);}
+#s3:target ~ .bullets >*:nth-child(3) {background: rgba(255, 255, 255,   1);}
+#s4:target ~ .bullets >*:nth-child(4) {background: rgba(255, 255, 255,   1);}
+/* More slides? Add here more rules */
+
+/* PREV/NEXT CONTAINERS VISIBILITY */
+/* ALL: */
+.CSSgal >s:target ~ .prevNext >* {      visibility: hidden;}
+/* ACTIVE: */
+#s1:target ~ .prevNext >*:nth-child(1) {visibility: visible;}
+#s2:target ~ .prevNext >*:nth-child(2) {visibility: visible;}
+#s3:target ~ .prevNext >*:nth-child(3) {visibility: visible;}
+#s4:target ~ .prevNext >*:nth-child(4) {visibility: visible;}
+/* More slides? Add here more rules */
+
+/* SLIDER ANIMATION POSITIONS */
+
+#s1:target ~ .slider {transform: translateX(   0%); -webkit-transform: translateX(   0%);}
+#s2:target ~ .slider {transform: translateX(-100%); -webkit-transform: translateX(-100%);}
+#s3:target ~ .slider {transform: translateX(-200%); -webkit-transform: translateX(-200%);}
+#s4:target ~ .slider {transform: translateX(-300%); -webkit-transform: translateX(-300%);}
+/* More slides? Add here more rules */
 
 .intro-slide{
   position: relative;
 }
+.intro-slide::after{
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: hsla(45, 99%, 60%, .5);
+  z-index: 3;
+  inset: 0;
+}
+
 .intro-slide .text{
   position: absolute;
-  background: hsla(0, 0%, 0%, .5);
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  background: rgba(66, 46, 46, 0.4);
+  inset: 0;
+  margin: auto;
   height: 80%;
-  width: 80%;
-  z-index: 3;
+  width: var(--wrap);
+  z-index: 4;
 }
+
 .intro-slide h2{
   text-transform: uppercase;
   font-family: var(--overskrift);
   color: var(--white);
   text-align: center;
+  width: 24ch;
 }
 
 .intro-slide a{
@@ -208,34 +454,337 @@ header a {
   text-decoration: none;
   color: var(--white);
   border: 2px solid var(--yellow);
+  box-shadow: 0 0 0 0.5px var(--yellow);
   font-family: var(--overskrift);
+  padding: 10px;
    
 }
+section + section{
+  margin-top: 2em;
+}
 
+.yellow-heading{
+  background: var(--yellow);
+  width: 100%;
+  padding-block: .5em;
+}
 
+.yellow-heading h2{
+  color: var(--white);
+  font-family: var(--overskrift);
+  text-align: center;
+}
+
+.match-box{
+  padding: 1.5em 1em;
+  background: hsla(0, 100%, 100%, .7);
+}
+.match-box > div + div{
+  margin-top: 1em;
+}
+.match-box img {
+  width: 80px;
+}
+.match-box-text{
+  text-align: center;
+  padding: 0 .2em;
+}
+
+.oversigt{
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  column-gap: .5em;
+  align-items: center;
+}
+.teams{
+  white-space: nowrap;
+}
+
+.article-img{
+  position: relative;
+}
+.article-img::after{
+  position: absolute;
+  content: "";
+  display: block;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: hsla(0, 0%, 0%, .5);
+}
+.article-img picture{
+  overflow: hidden;
+  position: relative;
+  height: 220px;
+}
+.article-img picture > *{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.match-box-article{
+  position: relative;
+}
+
+.match-box-article-text {
+  font-family: var(--overskrift);
+  color: var(--white);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.match-box-article-text h2 {
+  margin-bottom: 25px;
+  width: 20ch;
+}
+
+.match-box-article-text a{
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--white);
+  border: 2px solid var(--yellow);
+  font-family: var(--overskrift);
+  padding: 10px;
+}
+
+.outer-box {
+  background: hsla(0, 100%, 100%, .7);
+}
+
+.outer-box-txt {
+  padding: 20px;
+}
+
+.outer-box-txt a {
+  margin-top: 20px;
+}
+
+.column-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(min(100%,25ch),1fr));
+  gap: 2em;
+  width: 90%;
+  margin: 2em auto;
+}
+
+.sponsore-box {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--overskrift);
+  text-align: center;
+}
+.sponsore-box > p{
+  padding: 1em;
+}
+
+.sponsore-box h3 {
+  font-size: 1.6rem;
+  margin-top: 20px;
+}
+
+.sponsore-box a {
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: var(--overskrift);
+  color: var(--white);
+  border: 2px solid var(--yellow);
+  padding: .5em 1em;
+  display: inline-block;
+  margin-bottom: 1em;
+}
+
+.sponsore-pris-box{
+  background: var(--yellow);
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  padding-block: .5em;
+}
+
+.pris::after{
+  content: "kr.";
+  font-size: .6em;
+  display: inline;
+  margin-left: .4em;
+}
+
+.sponsorer-heading{
+  width: 90%;
+  margin: 1em auto;
+  font-family: var(--overskrift);
+}
+
+.sponsorer-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(min(100%,32ch),1fr));
+  gap: 1em;
+  width: 90%;
+  margin-inline: auto;
+  margin-bottom: 1em;
+}
+.sponsore-link{
+  color: var(--black);
+  font-family: var(--tekst);
+}
+.sponsore-link::before{
+  content: "⚽";
+  display: inline-block;
+  margin-right: .3em;
+}
+.sponsore-link:hover::before{
+  transform: rotate(360deg);
+  transition: transform 750ms ease-in-out;
+}
+
+.btn{
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--black);
+  box-shadow: 0 0 0 2px var(--black);
+  font-family: var(--overskrift);
+  padding: 10px;
+  display: inline-block;
+  background: var(--yellow);
+}
 
 footer{
   background: var(--yellow);
   font-family: var(--overskrift);
+  padding-bottom: 2em;
+  padding-top: 2em;
 }
 
-footer h2{
-  position: relative;
-  padding-bottom: .5em;
-}
-footer h2::after{
-  content: "";
-  display: inline-block;
+footer .line-shift{
   width: 40px;
   height: 2px;
   background-color: var(--black);
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  border: none;
+  margin-right: auto;
+  margin-bottom: .5em;
+  margin-top: 8px;
+  
 }
+
+footer p{
+  font-family: var(--tekst);
+}
+
 footer h2,
 footer h3,
 footer p{
   margin-bottom: .5em;
-  margin-top: .5em;
+}
+
+footer a {
+  text-decoration: none;
+  color: var(--black);
+}
+.footer-sponsor{
+  width: 100px;
+  display: block;
+  margin-bottom: 1em;
+}
+
+/*SVG ikoner i footeren - både farve og størrelse*/
+footer svg {
+  width: 2.5rem;
+  fill: var(--black);
+}
+
+.footer-links{
+  font-size: 1.2rem;
+}
+
+.footer-links::before{
+  content: ">";
+  display: inline-block;
+  margin-right: .5em;
+}
+
+/* 40em = 640px, bruger em i stedet for px så siden også ændre ved zoom */
+@media screen and (min-width: 40em){
+
+  :root{
+    --wrap: 85%;
+  }
+  .flex-mobile{
+    flex-direction: row;
+  }
+  .flex-mobile > * + *{
+    margin-top: 0;
+  } 
+  main{
+    background-image: url(../content/img/baggrund.jpg);
+  }
+
+  footer > .flexc{
+    flex-direction: row;
+  }
+
+  .article-img picture{
+    height: 520px;
+  }
+
+}
+
+/* 56em = 896px, vores menu skubber ud til siden ved lavere opløsninger */
+@media screen and (min-width: 56em){
+
+  :root{
+    --wrap: 80%;
+  }
+
+  /* justere header elementer */
+  header .wrapper > *:nth-child(1){
+    display: none;
+  }
+  header .wrapper > *:nth-child(2){
+    justify-content: flex-start;
+  }
+  header .wrapper > *:nth-child(3){
+    display: flex;
+  }
+  header .wrapper > *:nth-child(4){
+    justify-content: flex-end;
+  }
+  .cta{
+    transform: translateY(0);
+  }
+
+  .mobile-slides{
+    display: none;
+  }
+  .desktop-slides{
+    display: block;
+    margin-top: 0;
+  }
+  .intro-slide::after{
+    display: none;
+  }
+  .intro-slide .text{
+    height: 100%;
+    width: 100%;
+  }
+
+}
+/* 68em = 1088 */
+@media screen and (min-width: 68em) {
+  
+  :root{
+    --wrap: 75%;
+  }
+  
+  .match-box-article-text:hover {
+    transform: translate(-50%, -50%) scale(1.5);
+    transition: transform .5s ease;
+  }
+
+  .intro-text:hover{
+   transform: scale(1.5);
+   transition: transform .5s ease;
+  }
+
 }
