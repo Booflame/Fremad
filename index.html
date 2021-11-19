@@ -10,7 +10,6 @@
     <link rel="icon" type="image/png" sizes="16x16" href="content/favicon/favicon-16x16.png">
     <!-- FAVICON END -->
     <title>FREMAD</title>
-    <meta name="author" content="Nillermanden, Emma BH, Nosica, ÆG">
     <meta name="keywords" content="Fodbold, Aarhus, Århus, Fremad, Aarhus Fremad, Århus Fremad">
     <meta name="description" content="Aarhus Fremads hjemmeside der indeholder de nyeste nyheder om fodboldklubben">
     <meta property="og:type" content="website">
@@ -21,7 +20,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
+    <header class="ps-rel">
         <div class="wrapper flex">
             <!-- vi bruger classen flexbox for at gøre hvert vores header element lige store så vi kan placere logo i midten på mobil udgaven og naven i midten på desktop version -->
             <div class="flexbox flex-center">
@@ -67,7 +66,7 @@
                     </nav>
                 </div>
             </div>
-            <div class="flexbox flex-ai-fe">
+            <div class="flexbox flex-jc-c flex-ai-fe">
                 <a class="logo" href="index.html" aria-label="index">
                     <img src="content/img/fremad_logo.svg" alt="">
                 </a>
@@ -108,7 +107,7 @@
                     </ul>
                 </nav>
             </div>
-            <div class="flexbox flex-ai-fe">
+            <div class="flexbox flex-jc-c flex-ai-fe">
                 <a class="cta" href="#">
                     <p>KØB</p>
                     <p>BILLETTER</p>
@@ -118,7 +117,7 @@
     </header>
     <main>
         <section class="mobile-slides">
-            <div class="intro-slide">
+            <div class="intro-slide ps-rel">
                 <!-- bruger picture elementet til at skifte billede størrelse når man går op i højere skærm bredde -->
                 <picture>
                     <source media="(min-width:376px)" srcset="/content/img/1s.jpg"> 
@@ -131,7 +130,7 @@
                     </div> 
                 </div>
             </div>
-            <div class="intro-slide">
+            <div class="intro-slide ps-rel">
                 <picture>
                     <source media="(min-width:376px)" srcset="/content/img/2s.jpg"> 
                     <img src="content/img/2.jpg" alt="holdet efter en sejr">
@@ -143,7 +142,7 @@
                     </div>
                 </div>
             </div>
-            <div class="intro-slide">
+            <div class="intro-slide ps-rel">
                 <picture>
                     <source media="(min-width:376px)" srcset="/content/img/3s.jpg"> 
                     <img src="content/img/3.jpg" alt="fans på gaden">
@@ -158,14 +157,12 @@
         </section>
         <section class="wrapper desktop-slides">
             <div class="CSSgal">
-
                 <!-- Don't wrap targets in parent -->
                 <s id="s1"></s> 
                 <s id="s2"></s>
                 <s id="s3"></s>
-              
                 <div class="slider">
-                    <div>
+                    <div class="ps-rel">
                         <div class="intro-slide">
                             <!-- bruger picture elementet til at skifte billede størrelse når man går op i højere skærm bredde -->
                             <picture>
@@ -180,7 +177,7 @@
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div class="ps-rel">
                         <div class="intro-slide">
                             <picture>
                                 <source media="(min-width:376px)" srcset="/content/img/2s.jpg"> 
@@ -194,7 +191,7 @@
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div class="ps-rel">
                         <div class="intro-slide">
                             <picture>
                                 <source media="(min-width:376px)" srcset="/content/img/3s.jpg"> 
@@ -209,23 +206,20 @@
                         </div>
                     </div>
                 </div>
-                
                 <div class="prevNext">
                     <div><a href="#s3">&lt;</a><a href="#s2">&gt;</a></div>
                     <div><a href="#s1">&lt;</a><a href="#s3">&gt;</a></div>
                     <div><a href="#s2">&lt;</a><a href="#s1">&gt;</a></div>
                 </div>
-              
                 <div class="bullets">
                   <a href="#s1">1</a>
                   <a href="#s2">2</a>
                   <a href="#s3">3</a>
                 </div>
-              
             </div>
         </section>
-        <section class="wrapper flex-mobile flex-jc-sb gap-2">
-            <div class="flexc gap-2">
+        <section class="wrapper flex-mobile flex-jc-c gap-200">
+            <div class="flexc gap-200">
                 <div class="match-box-container">
                     <div class="yellow-heading">
                         <h2>Næste kamp</h2>
@@ -291,59 +285,57 @@
                 <img src="content/img/stilling.jpg" alt="stilling oversigt over holdene i anden division">
             </div>
         </section>        
-        <section class="">
-            <div class="wrapper">
-                <div class="match-box-container">
-                    <div class="yellow-heading">
-                        <h2>Seneste nyt</h2>
+        <section class="wrapper flexc gap-150">
+            <div class="match-box-container">
+                <div class="yellow-heading">
+                    <h2>Seneste nyt</h2>
+                </div>
+                <div class="match-box-article">
+                    <div class="article-img">
+                        <picture>
+                            <source media="(min-width:751px)" srcset="/content/img/jacobeichner.jpg">
+                            <source media="(min-width:376px)" srcset="/content/img/jacobeichner750.jpg">
+                            <img src="content/img/jacobeichner375.jpg" alt="Jacob Eichner">
+                        </picture>
                     </div>
-                    <div class="match-box-article">
-                        <div class="article-img">
-                            <picture>
-                                <source media="(min-width:751px)" srcset="/content/img/jacobeichner.jpg">
-                                <source media="(min-width:376px)" srcset="/content/img/jacobeichner750.jpg">
-                                <img src="content/img/jacobeichner375.jpg" alt="Jacob Eichner">
-                            </picture>
-                        </div>
-                        <div class="match-box-article-text">
-                            <h2>Jacob Eichner forlænger halvandet år frem til 2023</h2>
-                            <a href="">Læs mere</a>
-                        </div>
+                    <div class="match-box-article-text">
+                        <h2>Jacob Eichner forlænger halvandet år frem til 2023</h2>
+                        <a href="">Læs mere</a>
                     </div>
                 </div>
-                <div class="match-box-container">
-                    <div class="match-box-article">
-                        <div class="article-img">
-                            <picture>
-                                <source media="(min-width:376px)" srcset="/content/img/fodboldhold.jpg">
-                                <img src="content/img/fodboldhold375.jpg" alt="Holdet">
-                            </picture>
-                        </div>
-                        <div class="match-box-article-text">
-                            <h2>52.187 indsamlet til Skyggebørn og vi skal videre</h2>
-                            <a href="">Læs mere</a>
-                        </div>
+            </div>
+            <div class="match-box-container">
+                <div class="match-box-article">
+                    <div class="article-img">
+                        <picture>
+                            <source media="(min-width:376px)" srcset="/content/img/fodboldhold.jpg">
+                            <img src="content/img/fodboldhold375.jpg" alt="Holdet">
+                        </picture>
+                    </div>
+                    <div class="match-box-article-text">
+                        <h2>52.187 indsamlet til Skyggebørn og vi skal videre</h2>
+                        <a href="">Læs mere</a>
                     </div>
                 </div>
-                <div class="match-box-container">
-                    <div class="match-box-article">
-                        <div class="article-img">
-                            <picture>
-                                <source media="(min-width: 376px)" srcset="/content/img/stadion.jpg">
-                                <img src="content/img/stadion375.jpg" alt="Stadion">
-                            </picture>
-                        </div>
-                        <div class="match-box-article-text">
-                            <h2>Information til Aarhus Fremad-Kolding IF<br></h2>
-                            <a href="">Læs mere</a>
-                        </div>
+            </div>
+            <div class="match-box-container">
+                <div class="match-box-article">
+                    <div class="article-img">
+                        <picture>
+                            <source media="(min-width: 376px)" srcset="/content/img/stadion.jpg">
+                            <img src="content/img/stadion375.jpg" alt="Stadion">
+                        </picture>
+                    </div>
+                    <div class="match-box-article-text">
+                        <h2>Information til Aarhus Fremad-Kolding IF<br></h2>
+                        <a href="">Læs mere</a>
                     </div>
                 </div>
-            </div>     
+            </div>
         </section> 
     </main>
     <footer>
-        <div class="wrapper flexc flex-jc-sb">
+        <div class="wrapper flex-mobile flex-jc-sb gap-200">
             <div class="footer-section">
                 <h2>Kontakt</h2>
                 <hr class="line-shift">
@@ -366,7 +358,7 @@
             <div>
                 <h2>Følg os</h2>  
                 <hr class="line-shift">
-                <div class="flex gap-1">
+                <div class="flex gap-100">
                     <a href="https://www.facebook.com/aarhusfremad">
                       <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <title>Facebook</title>

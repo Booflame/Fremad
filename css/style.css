@@ -55,14 +55,17 @@
   display: flex;
   flex: 1;
 }
-.gap-1{
-  gap: 1em;
+.gap-100{
+  gap: 1rem;
 }
-.gap-2{
-  gap: 2em;
+.gap-150{
+  gap: 1.5rem
 }
-.gap-3{
-  gap: 3em;
+.gap-200{
+  gap: 2rem;
+}
+.ps-rel{
+  position: relative;
 }
 
 .wrapper{
@@ -72,7 +75,6 @@
 
 header {
   background-color: var(--black);
-  position: relative;
 }
 
 header .wrapper{
@@ -80,6 +82,7 @@ header .wrapper{
   padding-bottom: 40px;
 }
 
+/* fjerner vores desktop version af vores navigation */
 header .wrapper > *:nth-child(3){
   display: none;
 }
@@ -107,13 +110,18 @@ header a {
   width: 36px;
   height: 3px;
   background-color: var(--yellow);
-  cursor: pointer;
 }
-
 .burger::before,
 .burger::after{
   content: "";
 }
+.burger::before{
+  transform: translateY(11px);
+}
+.burger::after{
+  transform: translateY(20px);
+}
+
 /* .burger::before{
   transform: translateY(-20px);
 }
@@ -121,23 +129,16 @@ header a {
 .burger::after{
   transform: translateY(-13px);
 } */
-.burger::before{
-  transform: translateY(11px);
-}
-
-.burger::after{
-  transform: translateY(20px);
-}
 
 
-/* styler vore mobile nav og bruger psuedo classen checked til at vise den frem */
+/* styler vores mobile nav og bruger psuedo classen checked til at vise den frem */
+
 input[type=checkbox]{
   display: none;
 }
 
 .mobile-nav input[type=checkbox]:checked ~ .mobile-navbar{
   transform: translateX(120%);
-  transition: transform 500ms ease-in-out;
 }
 
 .mobile-navbar{
@@ -156,15 +157,11 @@ input[type=checkbox]{
   padding-top: .5em;
 }
 
+/* laver en chevron pil ned, ved brug af after og before psuedo elementer */
 .arrow-down{
   display: inline-block;
   position: relative;
 }
-/* .arrow-down::after{
-  content: "\2304";
-  position: absolute;
-  display: block;
-} */
 
 .arrow-down::before, 
 .arrow-down::after {
@@ -183,19 +180,23 @@ input[type=checkbox]{
   transform: rotate(-45deg) translate(17px, 1px);
 }
 
+/* viser vores dropdown frem */
 input[type=checkbox]:checked ~ .dropdown-menu{
   display: flex;
 }
 
+/* gemmer vores dropdown væk */
 .dropdown-menu{
   display: none;
   padding-top: .5em;
 }
 
+/* bruger whitespace: nowrap til at få tingene på linje */
 .dropdown-menu li{
   width: 165px;
   white-space: nowrap;
 }
+/* En af vores menu punkter er rimelig lang, så vi har den her til den så wrapper tilbage */
 .dropdown-menu .longboi{
   white-space: normal;
 }
@@ -277,11 +278,17 @@ input[type=checkbox]:checked ~ .dropdown-menu-desktop{
 }
 
 main{
-  background-image: url(../content/img/mobilbaggrund375.jpg);
+  background-image: url(../content/img/mobaggrund375.jpg);
+  padding-bottom: 2rem;
 }
-
 main p {
   font-family: var(--tekst);
+}
+section:first-of-type{
+  padding-top: 2rem;
+}
+main .mobile-slides{
+  padding-top: 0;
 }
 
 .desktop-slides{
@@ -352,6 +359,7 @@ main p {
   border-radius: 50%;
   font-size: 2rem;
   text-decoration: none;
+  color: var(--black);
 }
 .CSSgal .prevNext a:hover {
 	opacity: 1;
@@ -370,6 +378,7 @@ main p {
 	padding: 10px 0;
 	width: 100%;
 	text-align: center;
+  font-family: var(--overskrift);
 }
 .CSSgal .bullets > a {
 	display: inline-block;
@@ -379,8 +388,8 @@ main p {
 	text-decoration: none;
 	text-align: center;
 	background: rgba(255, 255, 255, 1);
-	-webkit-transition: 0.3s;
-					transition: 0.3s;
+  transition: 0.3s;
+  color: var(--black);
 }
 .CSSgal .bullets > a+a {
 	background: rgba(255, 255, 255, 0.5); /* Dim all but first */
@@ -391,12 +400,11 @@ main p {
 
 /* NAVIGATION BUTTONS */
 /* ALL: */
-.CSSgal >s:target ~ .bullets >* {      background: rgba(255, 255, 255, 0.5);}
+.CSSgal >s:target ~ .bullets >* {background: rgba(255, 255, 255, 0.5);}
 /* ACTIVE */
 #s1:target ~ .bullets >*:nth-child(1) {background: rgba(255, 255, 255,   1);}
 #s2:target ~ .bullets >*:nth-child(2) {background: rgba(255, 255, 255,   1);}
 #s3:target ~ .bullets >*:nth-child(3) {background: rgba(255, 255, 255,   1);}
-#s4:target ~ .bullets >*:nth-child(4) {background: rgba(255, 255, 255,   1);}
 /* More slides? Add here more rules */
 
 /* PREV/NEXT CONTAINERS VISIBILITY */
@@ -406,7 +414,6 @@ main p {
 #s1:target ~ .prevNext >*:nth-child(1) {visibility: visible;}
 #s2:target ~ .prevNext >*:nth-child(2) {visibility: visible;}
 #s3:target ~ .prevNext >*:nth-child(3) {visibility: visible;}
-#s4:target ~ .prevNext >*:nth-child(4) {visibility: visible;}
 /* More slides? Add here more rules */
 
 /* SLIDER ANIMATION POSITIONS */
@@ -414,12 +421,9 @@ main p {
 #s1:target ~ .slider {transform: translateX(   0%); -webkit-transform: translateX(   0%);}
 #s2:target ~ .slider {transform: translateX(-100%); -webkit-transform: translateX(-100%);}
 #s3:target ~ .slider {transform: translateX(-200%); -webkit-transform: translateX(-200%);}
-#s4:target ~ .slider {transform: translateX(-300%); -webkit-transform: translateX(-300%);}
 /* More slides? Add here more rules */
 
-.intro-slide{
-  position: relative;
-}
+
 .intro-slide::after{
   content: "";
   display: block;
@@ -478,6 +482,7 @@ section + section{
 .match-box{
   padding: 1.5em 1em;
   background: hsla(0, 100%, 100%, .7);
+  min-width: 250px;
 }
 .match-box > div + div{
   margin-top: 1em;
@@ -705,23 +710,21 @@ footer svg {
 }
 
 /* 40em = 640px, bruger em i stedet for px så siden også ændre ved zoom */
-@media screen and (min-width: 40em){
+@media screen and (min-width: 50em){
 
   :root{
     --wrap: 85%;
   }
+
   .flex-mobile{
     flex-direction: row;
   }
+
   .flex-mobile > * + *{
     margin-top: 0;
   } 
   main{
-    background-image: url(../content/img/baggrund.jpg);
-  }
-
-  footer > .flexc{
-    flex-direction: row;
+    background-image: url(../content/img/mobaggrund.jpg);
   }
 
   .article-img picture{

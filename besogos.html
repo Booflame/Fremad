@@ -10,10 +10,17 @@
     <link rel="icon" type="image/png" sizes="16x16" href="content/favicon/favicon-16x16.png">
     <!-- FAVICON END -->
     <title>BESØG OS</title>
+    <meta name="keywords" content="Fodbold, Aarhus, Århus, Fremad, Aarhus Fremad, Århus Fremad">
+    <meta name="description" content="Aarhus Fremads hjemmeside der indeholder de nyeste nyheder om fodboldklubben">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Aarhus Fremad Fodbold">
+    <meta property="og:description" content="Aarhus Fremad Fodbold AS - Den hyggeligste fodboldklub i hele Danmark kan findes i Aarhus N">
+    <meta property="og:url" content="">
+    <meta property="og:site_name" content="Aarhus Fremad Fodbold">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
+    <header class="ps-rel">
         <div class="wrapper flex">
             <!-- vi bruger classen flexbox for at gøre hvert vores header element lige store så vi kan placere logo i midten på mobil udgaven og naven i midten på desktop version -->
             <div class="flexbox flex-center">
@@ -31,7 +38,7 @@
                                     <span class="arrow-down"></span>
                                 </label>
                                 <input type="checkbox" id="dropdown-toggle-1">
-                                <ul class="flexc dropdown">
+                                <ul class="flexc dropdown-menu">
                                     <li><a href="#">Spillertrup</a></li>
                                     <li class="longboi"><a href="#">Ansatte & Bestyrrelsen</a></li>
                                     <li><a href="#">Vores tv-serie</a></li>
@@ -45,7 +52,7 @@
                                     <span class="arrow-down"></span>
                                 </label>
                                 <input type="checkbox" id="dropdown-toggle-2">
-                                <ul class="flexc dropdown">
+                                <ul class="flexc dropdown-menu">
                                     <li><a href="#">Fremad folket</a></li>
                                     <li><a href="#">Hjørnebanden</a></li>
                                     <li><a href="#">Venskabsklubber</a></li>
@@ -59,12 +66,12 @@
                     </nav>
                 </div>
             </div>
-            <div class="flexbox flex-ai-fe">
+            <div class="flexbox flex-jc-c flex-ai-fe">
                 <a class="logo" href="index.html" aria-label="index">
                     <img src="content/img/fremad_logo.svg" alt="">
                 </a>
             </div>
-            <div class="flexbox flex-ai-fe" >
+            <div class="flexbox flex-ai-fe">
                 <nav class="navbar">
                     <ul class="flex flex-ai-fe">
                         <li class="flex flex-jc-fe dropdown">
@@ -100,7 +107,7 @@
                     </ul>
                 </nav>
             </div>
-            <div class="flexbox flex-ai-fe">
+            <div class="flexbox flex-jc-c flex-ai-fe">
                 <a class="cta" href="#">
                     <p>KØB</p>
                     <p>BILLETTER</p>
@@ -116,30 +123,30 @@
                     <h2>Find vej til kampen</h2>
                 </div>
                 <div class="outer-box-txt">
-                <img src="/content/img/infomap.jpg" alt="infographic af stadion">
-                <p>Indgang A: <br>
-                Hans Egedes Vej 21, 8200 Aarhus N <br>
-                Er du frivillig, så er det her du skal hen!<br>
-                </p><br>
-                <p>Indgang B:<br>
-                Bethesdavej 37A, 8200 Aarhus N <br>
-                </p>
-                <img src="/content/img/map.png" alt="screenshot af google maps">
-            </div>
+                    <img src="/content/img/infomap.jpg" alt="infographic af stadion">
+                    <p>Indgang A: <br>
+                    Hans Egedes Vej 21, 8200 Aarhus N <br>
+                    Er du frivillig, så er det her du skal hen!<br>
+                    </p><br>
+                    <p>Indgang B:<br>
+                    Bethesdavej 37A, 8200 Aarhus N <br>
+                    </p>
+                    <img src="/content/img/map.png" alt="screenshot af google maps">
+                </div>
                 <div class="yellow-heading">
                     <h2>Hvad tilbyder vi på Vangen?</h2>
                 </div>
                 <div class="outer-box-txt">
-                <p>Lad madpakken blive derhjemme, for vi har Danmarks bedste stadionplatte.
-                    I vores boder kan du finde alt hvad hjertet begærer - til en fornuftig pris.
-                </p>
-            </div>
+                    <p>Lad madpakken blive derhjemme, for vi har Danmarks bedste stadionplatte.
+                        I vores boder kan du finde alt hvad hjertet begærer - til en fornuftig pris.
+                    </p>
+                </div>
             </div>
         </div>
         </section>
     </main>
     <footer>
-        <div class="wrapper flexc flex-jc-sb">
+        <div class="wrapper flex-mobile flex-jc-sb gap-200">
             <div class="footer-section">
                 <h2>Kontakt</h2>
                 <hr class="line-shift">
@@ -162,7 +169,7 @@
             <div>
                 <h2>Følg os</h2>  
                 <hr class="line-shift">
-                <div class="flex gap-1">
+                <div class="flex gap-100">
                     <a href="https://www.facebook.com/aarhusfremad">
                       <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <title>Facebook</title>
